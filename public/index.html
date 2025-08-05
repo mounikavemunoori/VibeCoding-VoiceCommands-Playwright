@@ -1,0 +1,46 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voice Command</title>
+</head>
+<body>
+  <h2>🎙 Say a command to trigger test</h2>
+  <button onclick="startListening()">Start Listening</button>
+  <p id="status"></p>
+
+  <script>
+    const status = document.getElementById("status");
+
+    function startListening() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+
+      recognition.onstart = () => {
+        status.textContent = "Listening...";
+      };
+
+      recognition.onresult = async (event) => {
+        const command = event.results[0][0].transcript;
+        status.textContent = `You said: "${command}"`;
+
+        // Send command to backend
+        await fetch('/run-test', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ command })
+        });
+      };
+
+      recognition.onerror = (err) => {
+        status.textContent = "Error: " + err.error;
+      };
+
+      recognition.start();
+    }
+  </script>
+</body>
+</html>

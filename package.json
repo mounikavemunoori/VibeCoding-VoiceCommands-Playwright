@@ -1,0 +1,32 @@
+{
+  "name": "vibecoding-voicecommands-playwright",
+  "version": "1.0.0",
+  "description": "This repository is used to implement automation scripts will run with voice commands",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mounikavemunoori/VibeCoding-VoiceCommands-Playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mounikavemunoori/VibeCoding-VoiceCommands-Playwright/issues"
+  },
+  "homepage": "https://github.com/mounikavemunoori/VibeCoding-VoiceCommands-Playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.54.1"
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^7.2.0",
+    "express": "^5.1.0",
+    "node-record-lpcm16": "^1.0.1"
+  }
+}
